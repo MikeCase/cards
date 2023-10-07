@@ -65,6 +65,7 @@ class Dealer(Player):
     def deal(self, count: int) -> None:
         """ Deal a card to a player """
         while count > 0:
+            self.takeCard(self.deck.deck.pop(0))
             for player in self.players:
                 if not self.deck.deck:
                     print("The deck is empty.")
@@ -87,5 +88,6 @@ for i in range(4):
 dealer = Dealer(deck, players)
 dealer.deal(2)
 print(dealer)
+print(dealer.showHand())
 for player in dealer.players:
     print(player, player.showHand())
