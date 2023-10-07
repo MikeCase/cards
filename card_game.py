@@ -64,16 +64,16 @@ class Dealer(Player):
 
     def deal(self, count: int) -> None:
         """ Deal a card to a player """
-        if count > 0:
+        while count > 0:
             for player in self.players:
-                for _ in range(count):
-                    if not self.deck.deck:
-                        print("The deck is empty.")
-                        return
-                    # get a card from the top of the deck 
-                    card = self.deck.deck.pop(0)
-                    # Give the card to the player
-                    player.takeCard(card)
+                if not self.deck.deck:
+                    print("The deck is empty.")
+                    return
+                # get a card from the top of the deck 
+                card = self.deck.deck.pop(0)
+                # Give the card to the player
+                player.takeCard(card)
+            count -= 1
                 
     def __repr__(self) -> str:
         return super().__repr__()
